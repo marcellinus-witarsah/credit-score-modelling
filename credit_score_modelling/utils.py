@@ -41,7 +41,7 @@ def read_yaml(path_to_yaml: Path) -> ConfigBox:
     ----------
     path_to_yaml: Path
         File location.
-        
+
 
     Returns
     -------
@@ -61,7 +61,7 @@ def read_yaml(path_to_yaml: Path) -> ConfigBox:
 
 
 @ensure_annotations
-def create_directories(path_to_directories: list, verbose: bool=True) -> None:
+def create_directories(path_to_directories: list, verbose: bool = True) -> None:
     """Create directories.
 
     Parameters
@@ -135,7 +135,7 @@ def save_bin(data: Any, path: Path) -> None:
         Data being saved.
     path: Path
         Destination file to store the data.
-        
+
 
     Returns
     -------
@@ -153,7 +153,7 @@ def load_bin(path: Path) -> Any:
     ----------
     path: Path
         File location.
-        
+
 
     Returns
     -------
@@ -172,7 +172,7 @@ def get_size(path: Path) -> str:
     ----------
     path: Path
         File location.
-        
+
 
     Returns
     -------
@@ -194,7 +194,7 @@ def load_pickle(path: Union[str, Path], mode: str) -> Any:
         File source of the data/ object.
     mode: str
         Read mode.
-        
+
 
     Returns
     -------
@@ -207,7 +207,7 @@ def load_pickle(path: Union[str, Path], mode: str) -> Any:
 
 
 @ensure_annotations
-def save_pickle(data, path: Union[Path, str], mode:str) -> None:
+def save_pickle(data, path: Union[Path, str], mode: str) -> None:
     """Save data into .pkl file.
 
     Parameters
@@ -218,8 +218,8 @@ def save_pickle(data, path: Union[Path, str], mode:str) -> None:
         Destination file to store the data.
     mode : str
         Write mode.
-        
-        
+
+
     Returns
     -------
 
