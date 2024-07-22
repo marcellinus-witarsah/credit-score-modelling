@@ -9,19 +9,17 @@ from sklearn.metrics import auc, precision_recall_curve
 from scipy.stats import ks_2samp
 
 
-def roc_auc(
-    y_true: Union[list, np.array], y_pred_proba: Union[list, np.array]
-) -> float:
+def roc_auc(y_true: Union[list, np.array], y_pred_proba: Union[list, np.array]) -> float:
     """Calculate ROC AUC (Area Under the Receiver Operating Characteristic Curve).
 
     Parameters
     ----------
     y_true: Union[list, np.array]
         True labels.
-        
+
     y_pred_proba: Union[list, np.array]
         Prediction probability of target class of `1`.
-        
+
     Returns
     -------
     float
@@ -38,7 +36,7 @@ def pr_auc(y_true: Union[list, np.array], y_pred_proba: Union[list, np.array]) -
     ----------
     y_true: Union[list, np.array]
         True labels.
-        
+
     y_pred_proba: Union[list, np.array]
         Prediction probability of target class of `1`.
 
@@ -59,7 +57,7 @@ def gini(y_true: Union[list, np.array], y_pred_proba: Union[list, np.array]) -> 
     ----------
     y_true: Union[list, np.array]
         True labels.
-        
+
     y_pred_proba: Union[list, np.array]
         Prediction probability of target class of `1`.
 
@@ -79,7 +77,7 @@ def ks(y_true: Union[list, np.array], y_pred_proba: Union[list, np.array]) -> fl
     ----------
     y_true: Union[list, np.array]
         True labels.
-        
+
     y_pred_proba: Union[list, np.array]
         Prediction probability of target class of `1`.
 

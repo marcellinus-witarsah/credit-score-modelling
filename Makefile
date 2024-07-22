@@ -65,6 +65,15 @@ pyment_generate_doc:
 
 	@echo ">>> $(DOC_FORMAT) documentation generated"
 
+	
+## Updata requirements.text
+.PHONY: update_requirements
+update_requirements: 
+	echo '-e .' >requirements.txt
+	pip-chill >> requirements.txt
+
+	@echo ">>> requirements.txt updated"
+
 
 
 #################################################################################

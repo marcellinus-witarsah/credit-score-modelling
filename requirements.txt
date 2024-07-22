@@ -1,10 +1,14 @@
-black
-flake8
-isort
-loguru
-mkdocs
-pip
-python-dotenv
-tqdm
-typer
 -e .
+black==24.4.2
+credit-score-modelling==0.0.1
+flake8==7.1.0
+ipykernel==6.29.5
+isort==5.13.2
+loguru==0.7.2
+mkdocs==1.6.0
+pip-chill==1.0.3
+python-dotenv==1.0.1
+scikit-learn==1.5.1
+seaborn==0.13.2
+tqdm==4.66.4
+typer==0.12.3
