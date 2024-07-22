@@ -2,7 +2,7 @@
 # GLOBALS                                                                       #
 #################################################################################
 
-PROJECT_NAME = credit-score-modelling
+PROJECT_NAME = credit-score-modeling
 PYTHON_VERSION = 3.12.4
 PYTHON_INTERPRETER = python
 
