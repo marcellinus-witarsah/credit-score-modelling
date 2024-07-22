@@ -1,8 +1,10 @@
+"""
+A module for utility functions.
+"""
+
 import os
-import sys
 import yaml
 import json
-import logging
 import joblib
 import pickle
 
@@ -12,42 +14,22 @@ from box import ConfigBox
 from ensure import ensure_annotations
 from typing import Any, Union
 from box.exceptions import BoxValueError
-
-
-# For Logging
-logging_format = "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
-
-logging_directory = "logs"
-os.makedirs(logging_directory, exist_ok=True)
-log_filepath = os.path.join(logging_directory, "running_logs.log")
-
-logging.basicConfig(
-    level=logging.INFO,  # set minimum log level to respond
-    format=logging_format,  # set the log output format
-    handlers=[
-        logging.FileHandler(log_filepath),  # set file to write the log messages
-        logging.StreamHandler(sys.stdout),  # send log messages to the system output
-    ],
-)  # set logging configuration
-
-logger = logging.getLogger("credit-score-modelling-logger")  # get logger
+from credit_score_modelling.config import logger
 
 
 @ensure_annotations
 def read_yaml(path_to_yaml: Path) -> ConfigBox:
-    """Read YAML file and return its value.
+    """reads yaml file and returns
 
-    Parameters
-    ----------
-    path_to_yaml: Path
-        File location.
+    Args:
+        path_to_yaml (str): path like input
 
+    Raises:
+        ValueError: if yaml file is empty
+        e: empty file
 
-    Returns
-    -------
-    ConfigBox
-        Value inside YAML file and wrapped with ConfigBox.
-
+    Returns:
+        ConfigBox: ConfigBox type
     """
     try:
         with open(path_to_yaml) as yaml_file:
@@ -61,20 +43,12 @@ def read_yaml(path_to_yaml: Path) -> ConfigBox:
 
 
 @ensure_annotations
-def create_directories(path_to_directories: list, verbose: bool = True) -> None:
-    """Create directories.
+def create_directories(path_to_directories: list, verbose=True):
+    """create list of directories
 
-    Parameters
-    ----------
-    path_to_directories: list :
-        List of file directories to be created.
-    verbose: bool, default=True
-        Show informational messages when directories are created.
-
-
-    Returns
-    -------
-
+    Args:
+        path_to_directories (list): list of path of directories
+        ignore_log (bool, optional): ignore if multiple dirs is to be created. Defaults to False.
     """
     for path in path_to_directories:
         os.makedirs(path, exist_ok=True)
@@ -83,19 +57,12 @@ def create_directories(path_to_directories: list, verbose: bool = True) -> None:
 
 
 @ensure_annotations
-def save_json(path: Path, data: dict) -> None:
-    """Load data into JSON format.
+def save_json(path: Path, data: dict):
+    """save json data
 
-    Parameters
-    ----------
-    path: Path
-        Destination file to store the data.
-    data: dict
-        Data being saved.
-
-    Returns
-    -------
-
+    Args:
+        path (Path): path to json file
+        data (dict): data to be saved in json file
     """
     with open(path, "w") as f:
         json.dump(data, f, indent=4)
@@ -105,41 +72,28 @@ def save_json(path: Path, data: dict) -> None:
 
 @ensure_annotations
 def load_json(path: Path) -> ConfigBox:
-    """Load .json file.
+    """load json files data
 
-    Parameters
-    ----------
-    path: Path
-        File location.
+    Args:
+        path (Path): path to json file
 
-    Returns
-    -------
-    ConfigBox
-        Content inside the .json file.
-
+    Returns:
+        ConfigBox: data as class attributes instead of dict
     """
     with open(path) as f:
         content = json.load(f)
 
-    logger.info(f"JSON file loaded successfully from: {path}")
+    logger.info(f"JSON file loaded succesfully from: {path}")
     return ConfigBox(content)
 
 
 @ensure_annotations
-def save_bin(data: Any, path: Path) -> None:
-    """Save to into binary format using joblib library.
+def save_bin(data: Any, path: Path):
+    """save binary file
 
-    Parameters
-    ----------
-    data: Any
-        Data being saved.
-    path: Path
-        Destination file to store the data.
-
-
-    Returns
-    -------
-
+    Args:
+        data (Any): data to be saved as binary
+        path (Path): path to binary file
     """
     joblib.dump(value=data, filename=path)
     logger.info(f"Binary file saved at: {path}")
@@ -147,17 +101,13 @@ def save_bin(data: Any, path: Path) -> None:
 
 @ensure_annotations
 def load_bin(path: Path) -> Any:
-    """Load binary data using joblib library.
+    """load binary data
 
-    Parameters
-    ----------
-    path: Path
-        File location.
+    Args:
+        path (Path): path to binary file
 
-
-    Returns
-    -------
-
+    Returns:
+        Any: object stored in the file
     """
     data = joblib.load(path)
     logger.info(f"Binary file loaded from: {path}")
@@ -166,39 +116,28 @@ def load_bin(path: Path) -> Any:
 
 @ensure_annotations
 def get_size(path: Path) -> str:
-    """Get file size.
+    """get size in KB
 
-    Parameters
-    ----------
-    path: Path
-        File location.
+    Args:
+        path (Path): path of the file
 
-
-    Returns
-    -------
-    str
-        Size of the file in KiloBytes.
-
+    Returns:
+        str: size in KB
     """
     size_in_kb = round(os.path.getsize(path) / 1024)
     return f"~ {size_in_kb} KB"
 
 
 @ensure_annotations
-def load_pickle(path: Union[str, Path], mode: str) -> Any:
-    """Load pickle file.
+def load_pickle(path: Union[str, Path], mode: str):
+    """Load pickle file
 
-    Parameters
-    ----------
-    path: Union[str, Path]
-        File source of the data/ object.
-    mode: str
-        Read mode.
+    Args:
+        file (Union[str, Path]): file location
+        mode (str): define which mode to open the file
 
-
-    Returns
-    -------
-
+    Returns:
+        Any: pickle object
     """
     with open(path, mode) as f:
         data = pickle.load(f)
@@ -207,22 +146,13 @@ def load_pickle(path: Union[str, Path], mode: str) -> Any:
 
 
 @ensure_annotations
-def save_pickle(data, path: Union[Path, str], mode: str) -> None:
-    """Save data into .pkl file.
+def save_pickle(data, path: Union[Path, str], mode=str):
+    """Save pickle file
 
-    Parameters
-    ----------
-    data :
-        Data being saved.
-    path : Union[Path, str]
-        Destination file to store the data.
-    mode : str
-        Write mode.
-
-
-    Returns
-    -------
-
+    Args:
+        data (Any): data to be saved as binary
+        path (Path): path to binary file
+        mode (str): define which mode to open the file
     """
     with open(path, mode) as f:
         pickle.dump(data, f)

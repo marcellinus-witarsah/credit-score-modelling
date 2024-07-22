@@ -1,3 +1,7 @@
+"""
+A module for Weight of Evidence calculation.
+"""
+
 import numpy as np
 import pandas as pd
 from typing import Union

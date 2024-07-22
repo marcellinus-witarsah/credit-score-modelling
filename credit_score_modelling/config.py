@@ -1,3 +1,7 @@
+"""
+A module for configuration.
+"""
+
 from pathlib import Path
 
 from dotenv import load_dotenv
@@ -10,6 +14,11 @@ load_dotenv()
 # Paths
 PROJ_ROOT = Path(__file__).resolve().parents[1]
 logger.info(f"PROJ_ROOT path is: {PROJ_ROOT}")
+CONFIG = read_yaml(PROJ_ROOT / "credit_score_modelling/config.yaml")
+DATA_PREPROCESSING = CONFIG.date_preprocessing
+TRAIN_CONFIG = CONFIG.train
+EVALUATE_CONFIG = CONFIG.evaluate
+INFERENCE_CONFIG = CONFIG.inference
 
 
 # If tqdm is installed, configure loguru with tqdm.write
@@ -21,9 +30,3 @@ try:
     logger.add(lambda msg: tqdm.write(msg, end=""), colorize=True)
 except ModuleNotFoundError:
     pass
-
-CONFIG = read_yaml(PROJ_ROOT / "credit_score_modelling/config.yaml")
-DATA_PREPROCESSING = CONFIG.date_preprocessing
-TRAIN_CONFIG = CONFIG.train
-EVALUATE_CONFIG = CONFIG.evaluate
-INFERENCE_CONFIG = CONFIG.inference

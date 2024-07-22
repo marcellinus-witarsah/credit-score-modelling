@@ -1,3 +1,7 @@
+"""
+A module for Weight of Evidence and Logistic Regression Model.
+"""
+
 import time
 import pickle
 import pandas as pd
