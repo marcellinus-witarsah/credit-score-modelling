@@ -61,14 +61,14 @@ def read_yaml(path_to_yaml: Path) -> ConfigBox:
 
 
 @ensure_annotations
-def create_directories(path_to_directories: list, verbose: str=True) -> None:
+def create_directories(path_to_directories: list, verbose: bool=True) -> None:
     """Create directories.
 
     Parameters
     ----------
     path_to_directories: list :
         List of file directories to be created.
-    verbose: str, default=True
+    verbose: bool, default=True
         Show informational messages when directories are created.
 
 
