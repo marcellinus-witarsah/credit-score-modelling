@@ -57,11 +57,11 @@ def create_directories(path_to_directories: list, verbose=True):
 
 
 @ensure_annotations
-def save_json(path: Path, data: dict):
+def save_json(path: Union[Path, str], data: dict):
     """save json data
 
     Args:
-        path (Path): path to json file
+        path (Union[Path, str]): path to json file
         data (dict): data to be saved in json file
     """
     with open(path, "w") as f:
@@ -71,11 +71,11 @@ def save_json(path: Path, data: dict):
 
 
 @ensure_annotations
-def load_json(path: Path) -> ConfigBox:
+def load_json(path: Union[Path, str]) -> ConfigBox:
     """load json files data
 
     Args:
-        path (Path): path to json file
+        path (Union[Path, str]): path to json file
 
     Returns:
         ConfigBox: data as class attributes instead of dict
@@ -88,23 +88,23 @@ def load_json(path: Path) -> ConfigBox:
 
 
 @ensure_annotations
-def save_bin(data: Any, path: Path):
+def save_bin(data: Any, path: Union[Path, str]):
     """save binary file
 
     Args:
         data (Any): data to be saved as binary
-        path (Path): path to binary file
+        path (Union[Path, str]): path to binary file
     """
     joblib.dump(value=data, filename=path)
     logger.info(f"Binary file saved at: {path}")
 
 
 @ensure_annotations
-def load_bin(path: Path) -> Any:
+def load_bin(path: Union[Path, str]) -> Any:
     """load binary data
 
     Args:
-        path (Path): path to binary file
+        path (Union[Path, str]): path to binary file
 
     Returns:
         Any: object stored in the file
@@ -126,34 +126,3 @@ def get_size(path: Path) -> str:
     """
     size_in_kb = round(os.path.getsize(path) / 1024)
     return f"~ {size_in_kb} KB"
-
-
-@ensure_annotations
-def load_pickle(path: Union[str, Path], mode: str):
-    """Load pickle file
-
-    Args:
-        file (Union[str, Path]): file location
-        mode (str): define which mode to open the file
-
-    Returns:
-        Any: pickle object
-    """
-    with open(path, mode) as f:
-        data = pickle.load(f)
-    logger.info(f"Pickle file loaded from: {path}")
-    return data
-
-
-@ensure_annotations
-def save_pickle(data, path: Union[Path, str], mode=str):
-    """Save pickle file
-
-    Args:
-        data (Any): data to be saved as binary
-        path (Path): path to binary file
-        mode (str): define which mode to open the file
-    """
-    with open(path, mode) as f:
-        pickle.dump(data, f)
-    logger.info(f"Pickle file saved at: {path}")

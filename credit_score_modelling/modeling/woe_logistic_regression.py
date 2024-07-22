@@ -127,7 +127,7 @@ class WOELogisticRegression(BaseEstimator, TransformerMixin):
         )
         return y_pred_proba
 
-    def evaluate(self, X_test: pd.DataFrame, y_true: pd.Series, type: str = "Training") -> tuple:
+    def evaluate(self, X_test: pd.DataFrame, y_true: pd.Series, type: str = "Training") -> dict:
         """
         Evaluate the pipeline on test data.
 
@@ -137,7 +137,7 @@ class WOELogisticRegression(BaseEstimator, TransformerMixin):
             type (str, optional): Type of evaluation ("Training" or "Validation"). Defaults to "Training".
 
         Returns:
-            tuple: A tuple containing ROC AUC, PR AUC, GINI, and KS scores.
+            dict: A dictionary containing key-value pair of ROC AUC, PR AUC, gini, and KS scores.
         """
         start_time = time.perf_counter()
         y_pred_proba = self.predict_proba(X_test)[:, 1]
@@ -160,7 +160,12 @@ class WOELogisticRegression(BaseEstimator, TransformerMixin):
                 self.pipeline.__class__.__name__, elapsed_time
             )
         )
-        return (roc_auc_score, pr_auc_score, gini_score, ks_score)
+        return {
+            "ROC AUC Score": roc_auc_score,
+            "PR AUC Score": pr_auc_score,
+            "Gini Score": gini_score,
+            "Kolmogorov-Smirnov Score": ks_score,
+        }
 
     def save(self, file: Path) -> None:
         """
