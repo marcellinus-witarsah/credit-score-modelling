@@ -52,12 +52,20 @@ create_environment:
 
 ## Create a ipykernel
 .PHONY: create_ipykernel
-create_ipykernel:
-	requirements
+create_ipykernel: requirements
 	$(PYTHON_INTERPRETER) -m pip install ipykernel
 	$(PYTHON_INTERPRETER) -m ipykernel install --user --name $(PROJECT_NAME) --display-name "$(PROJECT_NAME) (Python $(PYTHON_VERSION))"
 
 	@echo ">>> ipykernel created"
+
+## Create a documentation using numpydoc format
+.PHONY: pyment_generate_doc
+pyment_generate_doc: 
+	pyment -w -o $(DOC_FORMAT) $(PYTHON_FILE)
+
+	@echo ">>> $(DOC_FORMAT) documentation generated"
+
+
 
 #################################################################################
 # PROJECT RULES                                                                 #
