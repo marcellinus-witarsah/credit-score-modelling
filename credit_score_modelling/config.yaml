@@ -30,3 +30,6 @@ evaluate:
 
 inference:
   model_file: "models/woe_lr.pickle"
+  pdo: 20
+  odds: 1
+  base_score: 500

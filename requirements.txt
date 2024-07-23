@@ -3,6 +3,8 @@ black==24.4.2
 credit-score-modelling==0.0.1
 ensure==1.0.4
 flake8==7.1.0
+gradio==4.39.0
+httptools==0.6.1
 ipykernel==6.29.5
 isort==5.13.2
 loguru==0.7.2
@@ -13,4 +15,5 @@ python-box==7.2.0
 python-dotenv==1.0.1
 seaborn==0.13.2
 skops==0.10.0
-typer==0.12.3
+uvloop==0.19.0
+watchfiles==0.22.0

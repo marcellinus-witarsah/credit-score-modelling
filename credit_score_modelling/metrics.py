@@ -1,6 +1,7 @@
 """
 A module for evaluating model performance.
 """
+
 from typing import Union
 
 import numpy as np
