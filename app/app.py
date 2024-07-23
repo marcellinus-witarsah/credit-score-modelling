@@ -1,10 +1,9 @@
 import joblib
 import pandas as pd
 import gradio as gr
-from credit_score_modelling.config import INFERENCE_CONFIG
 
 
-credit_score_scaling = data = joblib.load(INFERENCE_CONFIG.credit_score_scaling_file)
+credit_score_scaling = data = joblib.load('models/credit_score_scaling.joblib')
 
 
 def predict_credit_score(
