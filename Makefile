@@ -127,6 +127,7 @@ push-hub:
 	huggingface-cli upload marcellinus-witarsah/credit-score-app ./credit_score_modelling /credit_score_modelling --repo-type=space --commit-message="Sync Personal Python Package"
 	huggingface-cli upload marcellinus-witarsah/credit-score-app ./requirements.txt /requirements.txt --repo-type=space --commit-message="Sync Python Dependencies"
 	huggingface-cli upload marcellinus-witarsah/credit-score-app ./pyproject.toml /pyproject.toml --repo-type=space --commit-message="Sync for Install Personal Python Package"
+	huggingface-cli upload marcellinus-witarsah/credit-score-app ./setup.cfg /setup.cfg --repo-type=space --commit-message="Sync for Install Personal Python Package"
 
 .PHONY: deploy
 deploy: hf-login push-hub
