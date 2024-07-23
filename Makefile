@@ -90,10 +90,26 @@ train:
 
 
 ## Train model
-.PHONY: evaluate
-evaluate: 
+.PHONY: eval
+eval: 
 	$(PYTHON_INTERPRETER) credit_score_modelling/modeling/evaluate.py
-	
+
+	echo "## Model Train Metrics" > report.md
+    cat ./reports/train_metrics.json >> report.md
+
+    echo "\n"
+	echo "## Train Calibration Plot" >> report.md
+    echo "![Train Calibration Plot](./reports/figures/train_calibration_curve.png)" >> report.md
+
+
+	echo "## Model Test Metrics" > report.md
+    cat ./reports/test_metrics.json >> report.md
+
+    echo "\n" >> report.md
+	echo "## Test Calibration Plot" >> report.md
+    echo "![Test Calibration Plot](./reports/figures/test_calibration_curve.png)" >> report.md
+
+    # cml comment create report.md
 	@echo ">>> Model evaluation completed"
 
 #################################################################################
