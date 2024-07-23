@@ -17,9 +17,6 @@ requirements:
 	$(PYTHON_INTERPRETER) -m pip install -U pip
 	$(PYTHON_INTERPRETER) -m pip install -r requirements.txt
 	
-
-
-
 ## Delete all compiled Python files
 .PHONY: clean
 clean:
@@ -37,9 +34,6 @@ lint:
 .PHONY: format
 format:
 	black --config pyproject.toml credit_score_modelling
-
-
-
 
 ## Set up python interpreter environment
 .PHONY: create_environment
@@ -66,7 +60,7 @@ pyment_generate_doc:
 	@echo ">>> $(DOC_FORMAT) documentation generated"
 
 	
-## Updata requirements.text
+## Update requirements.text
 .PHONY: update_requirements
 update_requirements: 
 	echo '-e .' >requirements.txt
@@ -75,6 +69,29 @@ update_requirements:
 	@echo ">>> requirements.txt updated"
 
 
+#################################################################################
+# Pipeline                                                                #
+#################################################################################
+
+## Train model
+.PHONY: data_preprocessing
+data_preprocessing: 
+	$(PYTHON_INTERPRETER) credit_score_modelling/data_preprocessing.py
+	@echo ">>> Data preprocessing completed"
+
+
+## Train model
+.PHONY: train
+train: 
+	$(PYTHON_INTERPRETER) credit_score_modelling/modeling/train.py
+	@echo ">>> Training completed"
+
+
+## Train model
+.PHONY: evaluate
+evaluate: 
+	$(PYTHON_INTERPRETER) credit_score_modelling/modeling/evaluate.py
+	@echo ">>> Model evaluation completed"
 
 #################################################################################
 # PROJECT RULES                                                                 #
