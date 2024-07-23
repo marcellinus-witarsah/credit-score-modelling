@@ -6,7 +6,7 @@ import pandas as pd
 from sklearn.linear_model import LogisticRegression
 from sklearn.pipeline import Pipeline
 
-from credit_score_modelling.config import logger
+from credit_score_modelling.utils import logger
 from credit_score_modelling.woe_transformer import WOETransformer
 
 

@@ -13,7 +13,16 @@ from box import ConfigBox
 from box.exceptions import BoxValueError
 from ensure import ensure_annotations
 
-from credit_score_modelling.config import logger
+from loguru import logger
+# If tqdm is installed, configure loguru with tqdm.write
+# https://github.com/Delgan/loguru/issues/135
+try:
+    from tqdm import tqdm
+
+    logger.remove(0)
+    logger.add(lambda msg: tqdm.write(msg, end=""), colorize=True)
+except ModuleNotFoundError:
+    pass
 
 
 @ensure_annotations
@@ -87,7 +96,7 @@ def load_json(path: Union[Path, str]) -> ConfigBox:
 
 
 @ensure_annotations
-def save_bin(data: Any, path: Union[Path, str]):
+def save_bin(data, path: Union[Path, str]):
     """save binary file
 
     Args:

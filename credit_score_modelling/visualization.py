@@ -11,7 +11,7 @@ from scipy import stats
 from sklearn.calibration import calibration_curve
 from sklearn.metrics import auc, precision_recall_curve, roc_curve
 
-from credit_score_modelling.config import logger
+from credit_score_modelling.utils import logger
 
 
 def plot_calibration_curve(

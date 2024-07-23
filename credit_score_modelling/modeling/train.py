@@ -1,9 +1,12 @@
 import pandas as pd
-
 from credit_score_modelling.config import TRAIN_CONFIG
 from credit_score_modelling.modeling.woe_logistic_regression import (
     WOELogisticRegression,
 )
+from credit_score_modelling.credit_score.credit_score_scaling import (
+    CreditScoreScaling,
+)
+from credit_score_modelling.utils import save_bin
 
 
 def main():
@@ -24,7 +27,9 @@ def main():
     model.fit(X_train, y_train)
 
     # 4. Save model
-    model.save(file=TRAIN_CONFIG.model_file)
+    save_bin(model, TRAIN_CONFIG.model_file)
+    credit_score_scaling = CreditScoreScaling(model.pipeline, TRAIN_CONFIG.pdo, TRAIN_CONFIG.odds, TRAIN_CONFIG.base_score)
+    save_bin(credit_score_scaling, TRAIN_CONFIG.credit_score_scaling_file)
 
 
 if __name__ == "__main__":

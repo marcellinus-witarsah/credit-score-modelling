@@ -13,7 +13,7 @@ from sklearn.base import BaseEstimator, TransformerMixin
 from sklearn.linear_model import LogisticRegression
 from sklearn.pipeline import Pipeline
 
-from credit_score_modelling.config import logger
+from credit_score_modelling.utils import logger
 from credit_score_modelling.metrics import gini, ks, pr_auc, roc_auc
 from credit_score_modelling.woe_transformer import WOETransformer
 

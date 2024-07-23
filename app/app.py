@@ -1,14 +1,10 @@
+import joblib
 import pandas as pd
 import gradio as gr
-from credit_score_modelling.modeling.woe_logistic_regression import WOELogisticRegression
-from credit_score_modelling.credit_score import CreditScoreScaling
 from credit_score_modelling.config import INFERENCE_CONFIG
 
 
-model = WOELogisticRegression.from_file(INFERENCE_CONFIG.model_file)
-credit_score_scaling = CreditScoreScaling(
-    model.pipeline, INFERENCE_CONFIG.pdo, INFERENCE_CONFIG.odds, INFERENCE_CONFIG.base_score
-)
+credit_score_scaling = data = joblib.load(INFERENCE_CONFIG.credit_score_scaling_file)
 
 
 def predict_credit_score(
@@ -39,7 +35,6 @@ def predict_credit_score(
             "cb_person_cred_hist_length": [cb_person_cred_hist_length],
         }
     )
-    # input_df.select_dtypes('object').str.replace(' ', '', inplace=True) 
     credit_scores_df = credit_score_scaling.calculate_credit_score(input_df.copy(deep=False))
     return int(credit_scores_df["credit_score"][0])
 

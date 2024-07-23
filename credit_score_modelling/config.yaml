@@ -14,14 +14,18 @@ train:
     "bins": 5
   }
   logreg_params: {"random_state": 42}
-  model_file: "models/woe_lr.pickle"
+  model_file: "models/woe_lr.joblib"
+  credit_score_scaling_file: "models/credit_score_scaling.joblib"
   target: "loan_status"
   test_file: "data/processed/test.csv"
+  pdo: 20
+  odds: 1
+  base_score: 500
 
 evaluate:
   train_file: "data/processed/train.csv"
   test_file: "data/processed/test.csv"
-  model_file: "models/woe_lr.pickle"
+  model_file: "models/woe_lr.joblib"
   target: "loan_status"
   train_metrics_file: "reports/train_metrics.json"
   test_metrics_file: "reports/test_metrics.json"
@@ -29,7 +33,4 @@ evaluate:
   test_calibration_curve_file: "reports/figures/test_calibration_curve.png"
 
 inference:
-  model_file: "models/woe_lr.pickle"
-  pdo: 20
-  odds: 1
-  base_score: 500
+  credit_score_scaling_file: "models/credit_score_scaling.joblib"

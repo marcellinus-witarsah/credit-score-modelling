@@ -5,9 +5,8 @@ A module for configuration.
 from pathlib import Path
 
 from dotenv import load_dotenv
-from loguru import logger
 
-from credit_score_modelling.utils import read_yaml
+from credit_score_modelling.utils import read_yaml, logger
 
 # Load environment variables from .env file if it exists
 load_dotenv()
@@ -20,14 +19,3 @@ DATA_PREPROCESSING = CONFIG.data_preprocessing
 TRAIN_CONFIG = CONFIG.train
 EVALUATE_CONFIG = CONFIG.evaluate
 INFERENCE_CONFIG = CONFIG.inference
-
-
-# If tqdm is installed, configure loguru with tqdm.write
-# https://github.com/Delgan/loguru/issues/135
-try:
-    from tqdm import tqdm
-
-    logger.remove(0)
-    logger.add(lambda msg: tqdm.write(msg, end=""), colorize=True)
-except ModuleNotFoundError:
-    pass
