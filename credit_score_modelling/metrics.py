@@ -1,12 +1,11 @@
 """
 A module for evaluating model performance.
 """
+from typing import Union
 
 import numpy as np
-from typing import Union
-from sklearn.metrics import roc_auc_score
-from sklearn.metrics import auc, precision_recall_curve
 from scipy.stats import ks_2samp
+from sklearn.metrics import auc, precision_recall_curve, roc_auc_score
 
 
 def roc_auc(y_true: Union[list, np.array], y_pred_proba: Union[list, np.array]) -> float:

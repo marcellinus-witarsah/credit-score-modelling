@@ -2,18 +2,17 @@
 A module for utility functions.
 """
 
-import os
-import yaml
 import json
-import joblib
-import pickle
-
-from typing import Any
+import os
 from pathlib import Path
-from box import ConfigBox
-from ensure import ensure_annotations
 from typing import Any, Union
+
+import joblib
+import yaml
+from box import ConfigBox
 from box.exceptions import BoxValueError
+from ensure import ensure_annotations
+
 from credit_score_modelling.config import logger
 
 

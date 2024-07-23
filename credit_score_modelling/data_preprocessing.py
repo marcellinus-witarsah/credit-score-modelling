@@ -1,8 +1,9 @@
 import time
+
 import pandas as pd
 from sklearn.model_selection import train_test_split
-from credit_score_modelling.config import logger
-from credit_score_modelling.config import DATA_PREPROCESSING
+
+from credit_score_modelling.config import DATA_PREPROCESSING, logger
 
 
 def main():

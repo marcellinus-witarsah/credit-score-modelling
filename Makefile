@@ -77,6 +77,7 @@ update_requirements:
 .PHONY: data_preprocessing
 data_preprocessing: 
 	$(PYTHON_INTERPRETER) credit_score_modelling/data_preprocessing.py
+
 	@echo ">>> Data preprocessing completed"
 
 
@@ -84,6 +85,7 @@ data_preprocessing:
 .PHONY: train
 train: 
 	$(PYTHON_INTERPRETER) credit_score_modelling/modeling/train.py
+
 	@echo ">>> Training completed"
 
 
@@ -91,6 +93,7 @@ train:
 .PHONY: evaluate
 evaluate: 
 	$(PYTHON_INTERPRETER) credit_score_modelling/modeling/evaluate.py
+	
 	@echo ">>> Model evaluation completed"
 
 #################################################################################

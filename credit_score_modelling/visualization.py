@@ -3,14 +3,14 @@ A module for visualization.
 """
 
 import time
+
+import matplotlib.pyplot as plt
 import numpy as np
 import seaborn as sns
-import matplotlib.pyplot as plt
 from scipy import stats
-from sklearn.metrics import roc_curve
-from sklearn.metrics import auc
-from sklearn.metrics import precision_recall_curve
 from sklearn.calibration import calibration_curve
+from sklearn.metrics import auc, precision_recall_curve, roc_curve
+
 from credit_score_modelling.config import logger
 
 

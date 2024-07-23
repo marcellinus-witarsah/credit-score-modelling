@@ -6,6 +6,7 @@ from pathlib import Path
 
 from dotenv import load_dotenv
 from loguru import logger
+
 from credit_score_modelling.utils import read_yaml
 
 # Load environment variables from .env file if it exists

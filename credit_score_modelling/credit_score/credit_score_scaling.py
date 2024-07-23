@@ -1,9 +1,11 @@
 import time
-import pandas as pd
-import numpy as np
 from typing import Union
-from sklearn.pipeline import Pipeline
+
+import numpy as np
+import pandas as pd
 from sklearn.linear_model import LogisticRegression
+from sklearn.pipeline import Pipeline
+
 from credit_score_modelling.config import logger
 from credit_score_modelling.woe_transformer import WOETransformer
 

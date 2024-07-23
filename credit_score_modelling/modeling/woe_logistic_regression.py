@@ -2,18 +2,20 @@
 A module for Weight of Evidence and Logistic Regression Model.
 """
 
-import time
 import pickle
-import pandas as pd
-import numpy as np
+import time
 from pathlib import Path
 from typing import Union
-from sklearn.pipeline import Pipeline
-from sklearn.linear_model import LogisticRegression
+
+import numpy as np
+import pandas as pd
 from sklearn.base import BaseEstimator, TransformerMixin
-from credit_score_modelling.woe_transformer import WOETransformer
+from sklearn.linear_model import LogisticRegression
+from sklearn.pipeline import Pipeline
+
 from credit_score_modelling.config import logger
-from credit_score_modelling.metrics import roc_auc, pr_auc, gini, ks
+from credit_score_modelling.metrics import gini, ks, pr_auc, roc_auc
+from credit_score_modelling.woe_transformer import WOETransformer
 
 
 class WOELogisticRegression(BaseEstimator, TransformerMixin):

@@ -2,9 +2,10 @@
 A module for Weight of Evidence calculation.
 """
 
+from typing import Union
+
 import numpy as np
 import pandas as pd
-from typing import Union
 from sklearn.base import BaseEstimator, TransformerMixin
 
 

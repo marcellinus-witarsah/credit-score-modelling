@@ -1,6 +1,9 @@
 import pandas as pd
+
 from credit_score_modelling.config import TRAIN_CONFIG
-from credit_score_modelling.modeling.woe_logistic_regression import WOELogisticRegression
+from credit_score_modelling.modeling.woe_logistic_regression import (
+    WOELogisticRegression,
+)
 
 
 def main():
