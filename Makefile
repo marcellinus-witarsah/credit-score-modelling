@@ -113,19 +113,18 @@ eval:
 
 
 #################################################################################
-# DEPLOYMENT                                                                 #
+# DEPLOYMENT                                                                    #
 #################################################################################
-
 .PHONY: hf-login
 hf-login:
-    pip install -U "huggingface_hub[cli]"
-    huggingface-cli login --token $(HF) --add-to-git-credential
+	pip install -U "huggingface_hub[cli]"
+	huggingface-cli login --token $(HF) --add-to-git-credential
 
 .PHONY: push-hub
 push-hub:
-    huggingface-cli upload marcellinus-witarsah/credit-score-app ./app --repo-type=space --commit-message="Sync App files"
-    huggingface-cli upload marcellinus-witarsah/credit-score-app ./models /models --repo-type=space --commit-message="Sync Model"
-    huggingface-cli upload marcellinus-witarsah/credit-score-app ./credit_score_modelling /credit_score_modelling --repo-type=space --commit-message="Sync Personal Python Package"
+	huggingface-cli upload marcellinus-witarsah/credit-score-app ./app --repo-type=space --commit-message="Sync App files"
+	huggingface-cli upload marcellinus-witarsah/credit-score-app ./models /models --repo-type=space --commit-message="Sync Model"
+	huggingface-cli upload marcellinus-witarsah/credit-score-app ./credit_score_modelling /credit_score_modelling --repo-type=space --commit-message="Sync Personal Python Package"
 
 .PHONY: deploy
 deploy: hf-login push-hub
