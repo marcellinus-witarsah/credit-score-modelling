@@ -13,5 +13,5 @@ jobs:
       - uses: actions/checkout@v3
       - name: Deployment To Hugging Face
         env:
-          HF: ${{ secrets.HF }}
+          HF: ${{ secrets.HF_CREDIT_SCORE_APP }}
         run: make deploy HF=$HF
