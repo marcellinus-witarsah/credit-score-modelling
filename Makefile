@@ -70,10 +70,10 @@ update_requirements:
 
 
 #################################################################################
-# Pipeline                                                                #
+# MODELLING			                                                            #
 #################################################################################
 
-## Train model
+## Data Preprocessing
 .PHONY: data_preprocessing
 data_preprocessing: 
 	$(PYTHON_INTERPRETER) credit_score_modelling/data_preprocessing.py
@@ -89,7 +89,7 @@ train:
 	@echo ">>> Training completed"
 
 
-## Train model
+## Evaluation
 .PHONY: eval
 eval:
 	$(PYTHON_INTERPRETER) credit_score_modelling/modeling/evaluate.py
@@ -110,6 +110,25 @@ eval:
 	
 	cml comment create report.md
 	@echo '>>> Model evaluation completed'
+
+
+#################################################################################
+# DEPLOYMENT                                                                 #
+#################################################################################
+
+.PHONY: hf-login
+hf-login:
+    pip install -U "huggingface_hub[cli]"
+    huggingface-cli login --token $(HF) --add-to-git-credential
+
+.PHONY: push-hub
+push-hub:
+    huggingface-cli upload marcellinus-witarsah/credit-score-app ./app --repo-type=space --commit-message="Sync App files"
+    huggingface-cli upload marcellinus-witarsah/credit-score-app ./models /models --repo-type=space --commit-message="Sync Model"
+    huggingface-cli upload marcellinus-witarsah/credit-score-app ./credit_score_modelling /credit_score_modelling --repo-type=space --commit-message="Sync Personal Python Package"
+
+.PHONY: deploy
+deploy: hf-login push-hub
 
 #################################################################################
 # PROJECT RULES                                                                 #
