@@ -108,7 +108,7 @@ def save_bin(data, path: Union[Path, str]):
 
 
 @ensure_annotations
-def load_bin(path: Union[Path, str]) -> Any:
+def load_bin(path: Union[Path, str]):
     """load binary data
 
     Args:
