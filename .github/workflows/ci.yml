@@ -1,0 +1,27 @@
+name: Continuous Integration
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:
+  
+permissions: write-all
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: iterative/setup-cml@v2
+      - name: Install Packages
+        run: make requirements
+      - name: Format
+        run: make format
+      - name: Data Preprocessing
+        run: make data_preprocessing
+      - name: Train
+        run: make train
+      - name: Evaluation
+        env:
+          REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: make eval
