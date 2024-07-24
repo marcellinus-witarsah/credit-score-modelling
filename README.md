@@ -10,7 +10,7 @@
 In this project, we developed a credit score model leveraging Logistic Regression and Weight of Evidence techniques. The scoring methodology is based on the "point to double the odds" approach, utilizing Logistic Regression parameters, Weight of Evidence, and specific user-defined constraints to assign credit points for based on each predictor variable. The development of credit score model are done manually without the help of `optbinning` (*like the previous one*).
 
 ## Project Scope
-The main objective is not only to create a reliable credit score model and develop a comprehensive credit scorecard, but also emphasizes on model deployment through web application. Some of the concepts involve python package development, continuous integration, and continuous deployment.
+The main objective is not only to create a reliable credit score model and develop a comprehensive credit scorecard, but also emphasizes on model deployment through web application. Some of the concepts involve python **package development, continuous integration, and continuous deployment**.
 
 
 ## Tools and Technologies
