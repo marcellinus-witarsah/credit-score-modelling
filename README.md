@@ -28,4 +28,4 @@ To run this project locally, you can use [Anaconda](https://docs.anaconda.com/fr
   make requirements  # install all libraries from the requirements.txt file
   make create_ipykernel  # create ipykernel
 ```
-With this you can use run the Python notebook using the exact same dependencies that I used for this project.
+With this you can use run the Python notebook using the exact same dependencies that I used for this project. For the web application you can access through this link https://huggingface.co/spaces/marcellinus-witarsah/credit-score-app.
