@@ -5,7 +5,7 @@ build-backend = "flit_core.buildapi"
 [project]
 name = "credit_score_modelling"
 version = "0.0.1"
-description = "A short description of the project."
+description = "Credit scoring project."
 authors = [
   { name = "Marcellinus Aditya Witarsah" },
 ]
@@ -15,7 +15,7 @@ classifiers = [
     "Programming Language :: Python :: 3",
     
 ]
-requires-python = "~=3.12.4"
+requires-python = "~=3.10"
 
 [tool.black]
 line-length = 99

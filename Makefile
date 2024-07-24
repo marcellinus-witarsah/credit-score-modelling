@@ -2,14 +2,13 @@
 # GLOBALS                                                                       #
 #################################################################################
 
-PROJECT_NAME = credit-score-modeling
-PYTHON_VERSION = 3.12.4
+PROJECT_NAME = credit-score-modelling
+PYTHON_VERSION = 3.10
 PYTHON_INTERPRETER = python
 
 #################################################################################
 # COMMANDS                                                                      #
 #################################################################################
-
 
 ## Install Python Dependencies
 .PHONY: requirements
