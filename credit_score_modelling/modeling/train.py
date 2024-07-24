@@ -1,3 +1,6 @@
+"""
+A module for model training.
+"""
 import pandas as pd
 
 from credit_score_modelling.config import TRAIN_CONFIG
@@ -22,9 +25,6 @@ def main():
     model.fit(X_train, y_train)
 
     # 4. Save model
-    # save_bin(model, TRAIN_CONFIG.model_file)
-    # credit_score_scaling = CreditScoreScaling(model.pipeline, TRAIN_CONFIG.pdo, TRAIN_CONFIG.odds, TRAIN_CONFIG.base_score)
-    # save_bin(credit_score_scaling, TRAIN_CONFIG.credit_score_scaling_file)
     model.save(TRAIN_CONFIG.model_file)
 
 

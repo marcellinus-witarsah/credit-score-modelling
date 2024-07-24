@@ -1,5 +1,5 @@
 """
-A module for evaluating model performance.
+A module containing metrics for model evaluation.
 """
 
 from typing import Union

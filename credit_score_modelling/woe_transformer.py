@@ -1,5 +1,5 @@
 """
-A module for Weight of Evidence calculation.
+A module for weight of evidence calculation.
 """
 
 from typing import Union

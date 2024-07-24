@@ -1,3 +1,6 @@
+"""
+A module for model evaluation.
+"""
 import pandas as pd
 
 from credit_score_modelling.config import EVALUATE_CONFIG
