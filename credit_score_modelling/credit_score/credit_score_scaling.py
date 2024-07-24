@@ -1,6 +1,7 @@
 """
 a module for credit score scaling.
 """
+
 import time
 from typing import Union
 

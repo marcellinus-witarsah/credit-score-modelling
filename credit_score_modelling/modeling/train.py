@@ -1,6 +1,7 @@
 """
 A module for model training.
 """
+
 import pandas as pd
 
 from credit_score_modelling.config import TRAIN_CONFIG
