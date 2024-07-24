@@ -111,7 +111,7 @@ eval:
 	@echo '>>> Model evaluation completed'
 
 
-
+## Push code to the update branch
 .PHONY: update-branch
 update-branch:
 	git config --global user.name $(USER_NAME)
