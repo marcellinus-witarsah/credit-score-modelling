@@ -24,7 +24,7 @@ def predict():
     )
 
     # 2. Initialize model
-    model = load_bin(EVALUATE_CONFIG.model_file)
+    model = WOELogisticRegression.from_file(EVALUATE_CONFIG.model_file)
 
     # 3. Evaluate model performance
     train_eval_results = model.evaluate(X_train, y_train, "Training")

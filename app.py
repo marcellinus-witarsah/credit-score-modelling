@@ -1,10 +1,13 @@
 import joblib
 import pandas as pd
 import gradio as gr
+from credit_score_modelling.credit_score import CreditScoreScaling
+from credit_score_modelling.modeling.woe_logistic_regression import WOELogisticRegression
+from credit_score_modelling.config import INFERENCE_CONFIG
 
 
-credit_score_scaling = data = joblib.load('models/credit_score_scaling.joblib')
-
+model = WOELogisticRegression.from_file(INFERENCE_CONFIG.model_file)
+credit_score_scaling = CreditScoreScaling(model.pipeline, INFERENCE_CONFIG.pdo, INFERENCE_CONFIG.odds, INFERENCE_CONFIG.scorecard_points)
 
 def predict_credit_score(
     person_age,
