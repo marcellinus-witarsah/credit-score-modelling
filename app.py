@@ -48,7 +48,7 @@ inputs = [
     gr.Number(label="Employment Length (Years)", minimum=0.0, maximum=50.0, value=5.0, step=1.0),
     gr.Dropdown(
         label="Loan Intent",
-        choices=["PERSONAL", "EDUCATION", "HOMEIMPROVEMENT", "DEBTCONSOLIDATION", "BUSINESS", "MEDICAL", "OTHER"]
+        choices=["PERSONAL", "EDUCATION", "HOMEIMPROVEMENT", "DEBTCONSOLIDATION", "VENTURE", "MEDICAL", "OTHER"]
     ),
     gr.Dropdown(label="Loan Grade", choices=["A", "B", "C", "D", "E", "F", "G"]),
     gr.Number(label="Loan Amount (USD)", minimum=0, value=10000, step=500),
