@@ -5,15 +5,15 @@ A module for utility functions.
 import json
 import os
 from pathlib import Path
-from typing import Any, Union
+from typing import Union
 
 import joblib
 import yaml
 from box import ConfigBox
 from box.exceptions import BoxValueError
 from ensure import ensure_annotations
-
 from loguru import logger
+
 # If tqdm is installed, configure loguru with tqdm.write
 # https://github.com/Delgan/loguru/issues/135
 try:

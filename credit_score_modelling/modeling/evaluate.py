@@ -1,10 +1,8 @@
 import pandas as pd
 
 from credit_score_modelling.config import EVALUATE_CONFIG
-from credit_score_modelling.modeling.woe_logistic_regression import (
-    WOELogisticRegression,
-)
-from credit_score_modelling.utils import save_json, load_bin
+from credit_score_modelling.modeling import WOELogisticRegression
+from credit_score_modelling.utils import save_json
 from credit_score_modelling.visualization import plot_calibration_curve
 
 
