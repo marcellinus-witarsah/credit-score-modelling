@@ -30,7 +30,7 @@ jobs:
         run: make eval
       - uses: actions/upload-artifact@v4
         with:
-          name: models/woe_lr.pickle
+          name: woe_lr.pickle
           path: models/woe_lr.pickle
       - name: Update Branch
         env:
